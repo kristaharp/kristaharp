@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.2
+sudo: false
+branches:
+  only:
+  - master
+install: bundle install && gem install s3_website
+after_success: 
+- test $TRAVIS_PULL_REQUEST != "false" && test $TRAVIS_BRANCH == "master" && s3_website push --config-dir config/staging
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && s3_website push --config-dir config/production

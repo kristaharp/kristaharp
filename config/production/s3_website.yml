@@ -6,6 +6,8 @@ cloudfront_distribution_id: <%= ENV['CF_DISTRIBUTION_ID'] %>
 
 exclude_from_upload:
  - config
+ - .travis.yml
+ - .gitignore
  
 cloudfront_distribution_config:
   default_cache_behavior:

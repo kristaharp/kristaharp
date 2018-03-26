@@ -1,0 +1,21 @@
+s3_id: <%= ENV['S3_ACCESS_KEY_ID'] %>
+s3_secret: <%= ENV['S3_SECRET_KEY'] %>
+s3_bucket: <%= ENV['S3_PROD_BUCKET'] %>
+s3_endpoint: <%= ENV['S3_PROD_REGION'] %>
+cloudfront_distribution_id: <%= ENV['CF_DISTRIBUTION_ID'] %>
+
+exclude_from_upload:
+ - config
+ 
+cloudfront_distribution_config:
+  default_cache_behavior:
+    min_ttl: <%= 60 * 60 * 24 %>
+  aliases:
+    quantity: 2
+    items:
+      - kristaharp.com
+      - www.kristaharp.com
+
+cloudfront_wildcard_invalidation: true
+
+cloudfront_invalidate_root: true
